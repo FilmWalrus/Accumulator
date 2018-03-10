@@ -1,0 +1,42 @@
+﻿body {
+  /* Uncomment this to enable scrolling and zooming
+  touch-action: manipulation;
+  */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    /*background-color: #2196F3;*/
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(200, 200, 200, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 30px 0;
+    font-size: 30px;
+    text-align: center;
+
+    vertical-align: central
+    /*width: 100px;
+    height: 100px;*/
+}
+
+    .grid-item:hover {
+        background: lightsalmon;
+    }
+
+button {
+    margin-top: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    padding: 0 40px;
+    background: salmon;
+    border: none;
+}
+
+    button:hover {
+        background: lightsalmon;
+    }
