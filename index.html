@@ -5,11 +5,22 @@
     <title>Accumulator</title>
     <link href="css/default.css" rel="stylesheet" />
 </head>
-<body onload="GridSetup();">
+<body onload="GameSetup();">
+    <script src="js/globals.js"></script>
+    <script src="js/accDeck.js"></script>
+    <script src="js/tileUtils.js"></script>
+    <script src="js/accCards.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/market.js"></script>
     <script src="js/main.js"></script>
-
-    <div id="main_grid" class="grid-container" >
-        <!--<input class="grid-item" type="Button" value="0" onclick="GridClick()" />-->
+    <div id="main_hud" class="hud-container">
+        <div id="main_grid" class="grid-container">
+            <!--<input class="grid-item" type="Button" value="0" onclick="GridClick()" />-->
+        </div>
+        <div id="market_grid" class="market-container">
+        </div>
     </div>
+
+    <span id="explostion_tray"></span>
 </body>
 </html>

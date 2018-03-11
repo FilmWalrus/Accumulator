@@ -4,6 +4,14 @@
   */
 }
 
+.hud-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto auto;
+    /*background-color: #2196F3;*/
+    padding: 10px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px;
@@ -13,7 +21,7 @@
 }
 
 .grid-item {
-    background-color: rgba(200, 200, 200, 0.8);
+    
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px 0;
     font-size: 30px;
@@ -25,18 +33,91 @@
 }
 
     .grid-item:hover {
-        background: lightsalmon;
+        border-radius: 15px;
     }
 
-button {
-    margin-top: 20px;
-    line-height: 60px;
-    font-weight: bold;
-    padding: 0 40px;
-    background: salmon;
-    border: none;
+.gray-box {
+    background-color: rgb(200, 200, 200);
+}
+.cyan-box {
+    background-color: rgb(110, 228, 245);
+}
+.blue-box {
+    background-color: rgb(68, 126, 232);
+}
+.purple-box {
+    background-color: rgb(203, 67, 235);
 }
 
-    button:hover {
-        background: lightsalmon;
+
+
+.market-container {
+    display: grid;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    /*background-color: #2196F3;*/
+    padding: 10px;
+}
+
+.market-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 30px 0;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: central
+}
+
+    .market-item:hover {
+        border-radius: 15px;
     }
+
+.inactive-card {
+    background-color: rgb(200, 150, 150);
+}
+
+.active-card {
+    background-color: rgb(250, 200, 200);
+}
+
+
+
+
+
+.explosion-circle {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    border-radius: 50%;
+    animation-name: explosion;
+    animation-duration: 0.3s;
+    z-index: 1;
+    visibility: hidden;
+}
+
+
+@keyframes explosion {
+    0% {
+        visibility: visible;
+        width: 0px;
+        height: 0px;
+        background-color: rgba(255, 0, 0, 1.0);
+        border: 2px solid black;
+        transform: translate(50px, 50px);
+    }
+
+    80% {
+        width: 160px;
+        height: 160px;
+        background-color: rgba(246, 150, 17, 0.75);
+        border: 10px solid yellow;
+        transform: translate(-30px, -30px);
+    }
+
+    100% {
+        width: 160px;
+        height: 160px;
+        background-color: rgba(255, 255, 0, 0.0);
+        border: 10px solid yellow;
+        transform: translate(-30px, -30px);
+    }
+}
