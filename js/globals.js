@@ -24,3 +24,5 @@ var marketArray = new Array();
 var marketCount = 5;
 
 var activeCard = -1;
+
+var playerCount = 4;

@@ -2,6 +2,7 @@
     DeckSetup();
     GridSetup();
     MarketSetup();
+    PlayerSetup();
 }
 
 

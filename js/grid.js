@@ -38,23 +38,21 @@
 
 function UpdateGrid() {
 
-    var explosionTray = document.getElementById("explostion_tray");
-    var childExplosions = explosionTray.children;
-    for (var i = 0; i < childExplosions.length; i++) {
-        var childExplosion = childExplosions[i];
-        explosionTray.removeChild(childExplosion);
-    }
+    ClearExplosions();
 
+    // Loop through all the tiles in the grid
     for (var i = 0; i < rowCount; i++) {
         for (var j = 0; j < colCount; j++) {
 
-            var buttonID = (i * 5) + j;
+            // Find the tile at this position
+            var tile = GetTile(i, j);
 
+            // Find the button html element associated with this tile
+            var buttonID = (i * 5) + j;
             var buttonIDName = "grid_square_" + buttonID;
             var button = document.getElementById(buttonIDName);
 
-            var tile = GetTile(i, j);
-
+            // Set up button class so it gets colored based on the tile colorLevel
             if (tile.colorLevel == 1) {
                 button.className = "grid-item cyan-box";
             } else if (tile.colorLevel == 2) {
@@ -65,24 +63,21 @@ function UpdateGrid() {
                 button.className = "grid-item gray-box";
             }
 
+            // If any tile goes past the color purple, current player scores a point!
+            if (tile.colorLevel >= 4) {
+                tile.colorLevel = 0;
+
+                CreateExplosions(button);
+            }
+
+            // If any tile goes to 10 or more, current player scores a point!
             if (tile.numberLevel >= 10) {
                 tile.numberLevel = tile.numberLevel % 10;
 
-                var exploder = document.createElement("explosion");
-                exploder.className = "explosion-circle";
-                
-                explosionTray.appendChild(exploder);
-
-                var rect = button.getBoundingClientRect();
-                exploder.style.position = "absolute";
-                exploder.style.left = rect.left + 'px';
-                exploder.style.top = rect.top + 'px';
-
-                
-                
+                CreateExplosions(button);
             }
 
-
+            // Display the tile numberLevel as the button text
             button.innerHTML = tile.numberLevel;
         }
     }
@@ -102,12 +97,12 @@ function GridClick(button) {
 
     var tile = GetTileByID(buttonID);
 
-    // Increase the color of the tile clicked on.
-    IncreaseTileColor(tile);
-
     // Apply the currently active card to the clicked tile.
     var cardIndex = marketArray[activeCard].cardIndex;
     ApplyCardToTile(tile, cardIndex);
+
+    // Increase the color of the tile clicked on.
+    IncreaseTileColor(tile);
 
     UpdateGrid();
 
@@ -115,4 +110,32 @@ function GridClick(button) {
     ReplaceCard(activeCard);
     activeCard = -1;
     UpdateMarket();
+}
+
+
+function ClearExplosions() {
+    // Remove all old explosion elements
+    var explosionTray = document.getElementById("explostion_tray");
+    var childExplosions = explosionTray.children;
+    for (var i = 0; i < childExplosions.length; i++) {
+        var childExplosion = childExplosions[i];
+        explosionTray.removeChild(childExplosion);
+    }
+}
+
+function CreateExplosions(element) {
+
+    // Get the explosion tray (the html element who owns the explosions)
+    var explosionTray = document.getElementById("explostion_tray");
+
+    // Create an explosion element
+    var exploder = document.createElement("explosion");
+    exploder.className = "explosion-circle";
+    explosionTray.appendChild(exploder);
+
+    // Position over the input element
+    var rect = element.getBoundingClientRect();
+    exploder.style.position = "absolute";
+    exploder.style.left = rect.left + 'px';
+    exploder.style.top = rect.top + 'px';
 }

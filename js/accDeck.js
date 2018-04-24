@@ -14,14 +14,18 @@
     cardDeck.push(new CardObj("+2 to all with this number", cardCount++));
     cardDeck.push(new CardObj("+1 to all with this color", cardCount++));
     cardDeck.push(new CardObj("+2 to all isolated colors", cardCount++));
-    cardDeck.push(new CardObj("+1 to grays for each adj. non-gray", cardCount++));
+    cardDeck.push(new CardObj("+1 to grays per adj. non-gray", cardCount++));
+    cardDeck.push(new CardObj("+1 to this color blob", cardCount++));
+    cardDeck.push(new CardObj("+2 to this number blob", cardCount++));
+    cardDeck.push(new CardObj("+1 per tile in this color blob", cardCount++));
+    cardDeck.push(new CardObj("+2 per tile in this number blob", cardCount++));
 }
 
 
 
 function ApplyCardToTile(tile, cardIndex) {
 
-    //IncreaseTileValue(tile, 7);
+    //SameColorBlobIncrease(tile, 1)
     //return;
 
     if (cardIndex == 1) {
@@ -63,21 +67,35 @@ function ApplyCardToTile(tile, cardIndex) {
     } else if (cardIndex == 13) {
         // +2 to all isolated colors
         IsolatedColorIncrease(2);
-    } else if (cardIndex == 14){
+    } else if (cardIndex == 14) {
         // +1 to grays for each adj non-gray
         GrayNextToColorIncrease();
+    } else if (cardIndex == 15) {
+        // +1 to all tiles in same color blob
+        SameColorBlobIncrease(tile, 1)
+    } else if (cardIndex == 16) {
+        // +2 to all tiles in same number blob
+        SameNumberBlobIncrease(tile, 2)
+    } else if (cardIndex == 17) {
+        // +1 per tile in this color blob
+        ColorBlobSizeIncrease(tile, 1)
+    } else if (cardIndex == 18) {
+        // +2 per tile in this number blob
+        NumberBlobSizeIncrease(tile, 2)
     }
 
 
-// +2 to diagonal
+
 // +2 to all same # and color clicked
-// +2 to all in color blob
-// +2 to all in number blob
 // +1 for each unique adj color
-// +1 for each adj higher #
+// +1 for each adj higher # (in ring?)
+// +2 to each unique number
 
 // +2 to 4-way mirror points
 // +1 to 8-way mirror points
 // +2 to 4-way rotations
+// +2 to diagonal
+// +1 to diagonal rays
+// +1 to knights moves
 // +5
 }

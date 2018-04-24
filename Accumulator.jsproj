@@ -73,6 +73,7 @@
     <Content Include="js\main.js" />
     <Content Include="css\default.css" />
     <Content Include="js\market.js" />
+    <Content Include="js\players.js" />
     <Content Include="js\tileUtils.js" />
     <None Include="Accumulator_TemporaryKey.pfx" />
   </ItemGroup>

@@ -22,14 +22,17 @@ function GetRowCol(tileID) {
     return [row, col];
 }
 
+function GetPreviousColor(tile) {
+    // Need to determine color when it was clicked
+    var prevColorLevel = tile.colorLevel - 1;
+    if (prevColorLevel < 0) {
+        prevColorLevel = colorCount - 1;
+    }
+    return prevColorLevel
+}
+
 function IncreaseTileColor(tile) {
     tile.colorLevel++;
-    if (tile.colorLevel >= 4) {
-        tile.colorLevel = 0;
-        return true;
-    } else {
-        return false;
-    }
 }
 
 function IncreaseTileValue(tile, pointValue) {
@@ -54,6 +57,14 @@ function AddToArray(tileArray, tile) {
     }
 }
 
+function AddToArrayUnique(tileArray, tile) {
+    if (tile && !tileArray.includes(tile)) {
+        tileArray.push(tile);
+        return true
+    }
+    return false
+}
+
 function GetAdjTiles(tile) {
     var adjArray = new Array();
     AddToArray(adjArray, GetTile(tile.row + 1, tile.col));
@@ -74,4 +85,28 @@ function GetAdjColorCounts(tile) {
     }
 
     return colorArray;
+}
+
+function GetColorBlob(blobArray, tile, colorLevel) {
+    if (tile.colorLevel == colorLevel) {
+        if (AddToArrayUnique(blobArray, tile)) {
+
+            var adjArray = GetAdjTiles(tile)
+            for (var i = 0; i < adjArray.length; i++) {
+                GetColorBlob(blobArray, adjArray[i], colorLevel);
+            }
+        }
+    }
+}
+
+function GetNumberBlob(blobArray, tile, numberLevel) {
+    if (tile.numberLevel == numberLevel) {
+        if (AddToArrayUnique(blobArray, tile)) {
+
+            var adjArray = GetAdjTiles(tile)
+            for (var i = 0; i < adjArray.length; i++) {
+                GetNumberBlob(blobArray, adjArray[i], numberLevel);
+            }
+        }
+    }
 }

@@ -8,15 +8,18 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-columns: auto auto;
+    /*grid-column-gap: 50px;*/
+    grid-gap: 50px 50px;
+    justify-content: flex-start;
+    align-content: flex-start;
     /*background-color: #2196F3;*/
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px;
     grid-template-rows: 100px 100px 100px 100px 100px;
-    /*background-color: #2196F3;*/
     padding: 10px;
 }
 
@@ -53,6 +56,7 @@
 
 .market-container {
     display: grid;
+    grid-template-columns: 500px;
     grid-template-rows: 100px 100px 100px 100px 100px;
     /*background-color: #2196F3;*/
     padding: 10px;
@@ -88,6 +92,8 @@
     background-color: red;
     position: relative;
     border-radius: 50%;
+    border: solid;
+    border-width: 10px;
     animation-name: explosion;
     animation-duration: 0.3s;
     z-index: 1;
@@ -100,24 +106,55 @@
         visibility: visible;
         width: 0px;
         height: 0px;
-        background-color: rgba(255, 0, 0, 1.0);
-        border: 2px solid black;
-        transform: translate(50px, 50px);
+        background-color: rgba(255, 0, 0, 0.0);
+        border-color: rgba(255, 0, 0, 1.0);
+        transform: translate(40px, 40px);
     }
 
     80% {
         width: 160px;
         height: 160px;
-        background-color: rgba(246, 150, 17, 0.75);
-        border: 10px solid yellow;
-        transform: translate(-30px, -30px);
+        background-color: rgba(246, 100, 17, 0.0);
+        border-color: rgba(246, 150, 17, 0.75);
+        transform: translate(-40px, -40px);
     }
 
     100% {
         width: 160px;
         height: 160px;
         background-color: rgba(255, 255, 0, 0.0);
-        border: 10px solid yellow;
-        transform: translate(-30px, -30px);
+        border-color: rgba(221, 255, 0, 0.00);
+        transform: translate(-40px, -40px);
     }
 }
+
+
+
+
+
+
+
+.player-container {
+    grid-column: 1 / span 2;
+    display: grid;
+    /*grid-template-columns: 200px 200px 200px 200px;*/
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 300px;
+    padding: 10px;
+    grid-gap: 50px 50px;
+}
+
+.player-item {
+    border: 1px solid rgba(0, 0, 0, 1.0);
+    background-color: #fa5858;
+    padding: 30px 0;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: central
+    /*width: 100px;
+    height: 100px;*/
+}
+
+    .player-item:hover {
+        border-radius: 15px;
+    }

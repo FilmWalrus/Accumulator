@@ -79,16 +79,10 @@ function SameNumberIncrease(tile, pointValue) {
 
 function SameColorIncrease(tile, pointValue) {
 
-    // Need to determine color when it was clicked
-    var prevColorLevel = tile.colorLevel - 1;
-    if (prevColorLevel < 0) {
-        prevColorLevel = colorCount - 1;
-    }
-
     for (var i = 0; i < rowCount; i++) {
         for (var j = 0; j < colCount; j++) {
             var curTile = GetTile(i, j);
-            if (curTile.colorLevel == prevColorLevel) {
+            if (curTile.colorLevel == tile.colorLevel) {
                 IncreaseTileValue(curTile, pointValue);
             }
         }
@@ -119,4 +113,32 @@ function GrayNextToColorIncrease() {
             }
         }
     }
+}
+
+function SameColorBlobIncrease(tile, pointValue) {
+
+    var blobArray = new Array();
+    GetColorBlob(blobArray, tile, tile.colorLevel)
+    IncreaseTileArray(blobArray, pointValue);
+}
+
+function SameNumberBlobIncrease(tile, pointValue) {
+
+    var blobArray = new Array();
+    GetNumberBlob(blobArray, tile, tile.numberLevel)
+    IncreaseTileArray(blobArray, pointValue);
+}
+
+function ColorBlobSizeIncrease(tile, pointValue) {
+
+    var blobArray = new Array();
+    GetColorBlob(blobArray, tile, tile.colorLevel)
+    IncreaseTileValue(tile, blobArray.length);
+}
+
+function NumberBlobSizeIncrease(tile, pointValue) {
+
+    var blobArray = new Array();
+    GetNumberBlob(blobArray, tile, tile.numberLevel)
+    IncreaseTileValue(tile, blobArray.length * pointValue);
 }

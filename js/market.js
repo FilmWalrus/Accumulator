@@ -26,15 +26,20 @@
 
 function UpdateMarket() {
 
+    // Loop through the card positions in the market
     for (var i = 0; i < marketCount; i++) {
 
+        // Get the card associated with this market position
+        var card = marketArray[i];
+
+        // Get the button associated with this market position
         var buttonIDName = "market_square_" + i;
         var button = document.getElementById(buttonIDName);
 
-        var card = marketArray[i];
-
+        // Set the button description to the card description
         button.innerHTML = card.description;
 
+        // Set the button color based on whether is was selected or not
         if (card.active) {
             button.className = "market-item active-card";
         } else {
