@@ -14,15 +14,20 @@
     <script src="js/market.js"></script>
     <script src="js/players.js"></script>
     <script src="js/main.js"></script>
+
+    <audio id="point-audio" src="sounds/pointExplosion.wav" preload="auto"></audio>
+
     <div id="main_hud" class="hud-container">
-        <div id="main_grid" class="grid-container">
-            <!--<input class="grid-item" type="Button" value="0" onclick="GridClick()" />-->
-        </div>
-        <div id="market_grid" class="market-container">
-        </div>
-        <div id="player_grid" class="player-container">
-        </div>
+
+        <div id="market_grid" class="market-container"></div>
+        <div id="main_grid" class="grid-container"></div>
+        <div id="player_grid" class="player-container"></div>
     </div>
+
+    <p>
+        [1] Play a card from the left on a tile to the right. [2] The card's effect is applied to the tile(s). [3] The tile changes color: gray >> cyan >> blue >> purple.<br>
+        You get 2 actions each turn. +1 point each time a tile goes over 10 or past purple. +1 action each time your combo passes an even number.
+    </p>
 
     <span id="explostion_tray"></span>
 </body>

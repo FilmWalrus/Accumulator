@@ -40,6 +40,9 @@ function UpdateGrid() {
 
     ClearExplosions();
 
+    // Get the current player
+    var currentPlayer = playerArray[activePlayer]
+
     // Loop through all the tiles in the grid
     for (var i = 0; i < rowCount; i++) {
         for (var j = 0; j < colCount; j++) {
@@ -66,13 +69,15 @@ function UpdateGrid() {
             // If any tile goes past the color purple, current player scores a point!
             if (tile.colorLevel >= 4) {
                 tile.colorLevel = 0;
+                currentPlayer.ScorePoint()
 
                 CreateExplosions(button);
             }
 
             // If any tile goes to 10 or more, current player scores a point!
-            if (tile.numberLevel >= 10) {
-                tile.numberLevel = tile.numberLevel % 10;
+            while (tile.numberLevel >= 10) {
+                tile.numberLevel -= 10;
+                currentPlayer.ScorePoint()
 
                 CreateExplosions(button);
             }
@@ -83,7 +88,6 @@ function UpdateGrid() {
     }
 
 }
-
 
 
 function GridClick(button) {
@@ -97,19 +101,8 @@ function GridClick(button) {
 
     var tile = GetTileByID(buttonID);
 
-    // Apply the currently active card to the clicked tile.
-    var cardIndex = marketArray[activeCard].cardIndex;
-    ApplyCardToTile(tile, cardIndex);
-
-    // Increase the color of the tile clicked on.
-    IncreaseTileColor(tile);
-
-    UpdateGrid();
-
-    // Replace the card in the market and update the market display
-    ReplaceCard(activeCard);
-    activeCard = -1;
-    UpdateMarket();
+    // Play the active card on the grid tile clicked.
+    PlayCard(activeCard, tile);
 }
 
 
@@ -125,17 +118,29 @@ function ClearExplosions() {
 
 function CreateExplosions(element) {
 
-    // Get the explosion tray (the html element who owns the explosions)
-    var explosionTray = document.getElementById("explostion_tray");
-
     // Create an explosion element
     var exploder = document.createElement("explosion");
     exploder.className = "explosion-circle";
-    explosionTray.appendChild(exploder);
 
     // Position over the input element
     var rect = element.getBoundingClientRect();
     exploder.style.position = "absolute";
     exploder.style.left = rect.left + 'px';
     exploder.style.top = rect.top + 'px';
+
+    var randomDelay = Math.floor(Math.random() * 500);
+    setTimeout(function () { TriggerExplosion(exploder); }, randomDelay);
+}
+
+function TriggerExplosion(explosion) {
+    // Play audio
+    //pointAudio.play();
+
+    const origAudio = document.getElementById("point-audio");
+    const newAudio = origAudio.cloneNode()
+    newAudio.play()
+
+    // Get the explosion tray (the html element who owns the explosions)
+    var explosionTray = document.getElementById("explostion_tray");
+    explosionTray.appendChild(explosion);
 }

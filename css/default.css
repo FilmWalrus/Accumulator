@@ -13,14 +13,14 @@
     justify-content: flex-start;
     align-content: flex-start;
     /*background-color: #2196F3;*/
-    /*padding: 10px;*/
+    padding: 10px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px;
     grid-template-rows: 100px 100px 100px 100px 100px;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .grid-item {
@@ -59,13 +59,13 @@
     grid-template-columns: 500px;
     grid-template-rows: 100px 100px 100px 100px 100px;
     /*background-color: #2196F3;*/
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .market-item {
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px 0;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     vertical-align: central
 }
@@ -137,11 +137,11 @@
 .player-container {
     grid-column: 1 / span 2;
     display: grid;
-    /*grid-template-columns: 200px 200px 200px 200px;*/
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 300px;
-    padding: 10px;
+    grid-template-columns: 225px 225px 225px 225px;
+    /*grid-template-columns: auto auto auto auto;*/
+    grid-template-rows: 225px;
     grid-gap: 50px 50px;
+    /*padding: 10px;*/
 }
 
 .player-item {
@@ -158,3 +158,15 @@
     .player-item:hover {
         border-radius: 15px;
     }
+
+.inactive-player {
+    background-color: #fa5858;
+}
+
+.active-player {
+    background-color: #fee551;
+}
+
+.no-player {
+    background-color: rgba(0, 0, 0, 0.8);
+}

@@ -14,11 +14,11 @@
     cardDeck.push(new CardObj("+2 to all with this number", cardCount++));
     cardDeck.push(new CardObj("+1 to all with this color", cardCount++));
     cardDeck.push(new CardObj("+2 to all isolated colors", cardCount++));
-    cardDeck.push(new CardObj("+1 to grays per adj. non-gray", cardCount++));
+    cardDeck.push(new CardObj("+1 to grays for each adj. non-gray", cardCount++));
     cardDeck.push(new CardObj("+1 to this color blob", cardCount++));
     cardDeck.push(new CardObj("+2 to this number blob", cardCount++));
-    cardDeck.push(new CardObj("+1 per tile in this color blob", cardCount++));
-    cardDeck.push(new CardObj("+2 per tile in this number blob", cardCount++));
+    //cardDeck.push(new CardObj("+1 per tile in this color blob", cardCount++));
+    //cardDeck.push(new CardObj("+2 per tile in this number blob", cardCount++));
 }
 
 
@@ -89,7 +89,7 @@ function ApplyCardToTile(tile, cardIndex) {
 // +2 to all same # and color clicked
 // +1 for each unique adj color
 // +1 for each adj higher # (in ring?)
-// +2 to each unique number
+// +2 to all unique numbers
 
 // +2 to 4-way mirror points
 // +1 to 8-way mirror points

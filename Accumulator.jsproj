@@ -75,6 +75,7 @@
     <Content Include="js\market.js" />
     <Content Include="js\players.js" />
     <Content Include="js\tileUtils.js" />
+    <Content Include="sounds\pointExplosion.wav" />
     <None Include="Accumulator_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
